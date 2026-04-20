@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Tracker Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Network Intelligence</p>
+      <h1>Track an IP address in seconds.</h1>
+      <p class="hero-copy">
+        Look up geolocation, ISP, timezone, ASN, and network metadata for any public IPv4 or IPv6 address.
+      </p>
+    </header>
+
+    <main class="tracker-panel">
+      <form id="ip-form" class="search-bar">
+        <label class="sr-only" for="ip-input">IP address</label>
+        <input
+          id="ip-input"
+          name="ip"
+          type="text"
+          autocomplete="off"
+          placeholder="Enter IP address or leave blank for your IP"
+        >
+        <button type="submit">Track IP</button>
+      </form>
+
+      <div class="quick-actions">
+        <button type="button" class="ghost-button" id="use-my-ip">Use my IP</button>
+        <button type="button" class="ghost-button" data-sample-ip="8.8.8.8">Try 8.8.8.8</button>
+        <button type="button" class="ghost-button" data-sample-ip="1.1.1.1">Try 1.1.1.1</button>
+      </div>
+
+      <section class="status-card" id="status-card" aria-live="polite">
+        <p class="status-label">Status</p>
+        <p class="status-message" id="status-message">Enter an IP address to begin.</p>
+      </section>
+
+      <section class="results-grid" id="results-grid" hidden>
+        <article class="card card-highlight">
+          <p class="card-label">IP Address</p>
+          <h2 id="result-ip">-</h2>
+          <p id="result-type" class="muted">-</p>
+        </article>
+
+        <article class="card">
+          <p class="card-label">Location</p>
+          <h3 id="result-location">-</h3>
+          <p id="result-region" class="muted">-</p>
+          <p id="result-coordinates" class="mono">-</p>
+        </article>
+
+        <article class="card">
+          <p class="card-label">Network</p>
+          <h3 id="result-isp">-</h3>
+          <p id="result-org" class="muted">-</p>
+          <p id="result-asn" class="mono">-</p>
+        </article>
+
+        <article class="card">
+          <p class="card-label">Timezone</p>
+          <h3 id="result-timezone">-</h3>
+          <p id="result-offset" class="muted">-</p>
+          <p id="result-currency" class="mono">-</p>
+        </article>
+
+        <article class="card map-card">
+          <div class="map-card-copy">
+            <p class="card-label">Map</p>
+            <h3 id="result-map-title">Approximate geolocation</h3>
+            <p id="result-map-copy" class="muted">Open the map to explore the approximate area for this IP.</p>
+          </div>
+          <a id="map-link" class="map-link" href="#" target="_blank" rel="noreferrer">Open in Google Maps</a>
+        </article>
+
+        <article class="card">
+          <p class="card-label">Security Notes</p>
+          <ul class="detail-list">
+            <li><span>Proxy</span><strong id="result-proxy">-</strong></li>
+            <li><span>Tor</span><strong id="result-tor">-</strong></li>
+            <li><span>Mobile</span><strong id="result-mobile">-</strong></li>
+            <li><span>Continent</span><strong id="result-continent">-</strong></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "ip-tracker-tool",
+  "version": "1.0.0",
+  "description": "A dependency-free IP tracker tool with a local Node server and API fallback.",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  }
+}
